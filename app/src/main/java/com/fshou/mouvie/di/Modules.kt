@@ -2,6 +2,10 @@ package com.fshou.mouvie.di
 
 import com.fshou.mouvie.data.MovieRepository
 import com.fshou.mouvie.data.network.service.TMDBService
+import com.fshou.mouvie.ui.screen.detail.DetailViewModel
+import com.fshou.mouvie.ui.screen.home.HomeViewModel
+import com.fshou.mouvie.utils.API_BASE_URL
+import com.fshou.mouvie.utils.API_KEY
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +20,7 @@ val networkModule = module {
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val requestHeaders = req.newBuilder()
-                .addHeader("Authorization", "Bearer fb7bb23f03b6994dafc674c074d01761")
+                .addHeader("Authorization", "Bearer $API_KEY")
                 .build()
             chain.proceed(requestHeaders)
         }
@@ -27,7 +31,7 @@ val networkModule = module {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3")
+            .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
@@ -40,4 +44,9 @@ val repositoryModule = module {
     single {
         MovieRepository(get())
     }
+}
+
+val viewModelModule = module {
+    single { HomeViewModel(get()) }
+    single { DetailViewModel(get()) }
 }

@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
 
+    implementation(libs.androidx.navigation.compose)
+
     // retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
