@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fshou.mouvie.data.network.response.MovieItem
+import com.fshou.mouvie.data.network.response.MovieListResponse
+import com.fshou.mouvie.data.utils.RequestState
 import com.fshou.mouvie.ui.theme.MouvieTheme
 
 @Composable
@@ -46,7 +48,7 @@ fun MovieCardList(
 ) {
     LazyRow(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
         ,
         contentPadding = PaddingValues(horizontal = 24.dp)
     ) {
@@ -60,7 +62,7 @@ fun MovieCardList(
     }
 }
 
-val DUMMY_MOVIE_LIST = List(10) {
+val DUMMY_MOVIE_LIST = List(5) {
     MovieItem(
         id = it,
         title = "Sample",
@@ -82,17 +84,32 @@ private fun MovieCardListPrev() {
 @Composable
 fun MovieListSection(
     modifier: Modifier = Modifier,
-    movieList: List<MovieItem> = emptyList(),
     navigateToDetail: (Int) -> Unit,
+    requestState: RequestState<MovieListResponse> = RequestState.Loading,
     title: String
 ) {
     Column(modifier = modifier) {
         SectionTitle(text = title, modifier = Modifier.padding(horizontal = 24.dp))
-        Spacer(modifier = Modifier.height(12.dp))
-        MovieCardList(
-            movieList = movieList,
-            navigateToDetail = navigateToDetail,
-        )
+        Spacer(modifier = Modifier.height(6.dp))
+        when(requestState) {
+            is RequestState.Error -> {
+                Text(text = requestState.msg, color = Color.White)
+            }
+            RequestState.Loading -> {
+                MovieCardList(
+                    movieList = DUMMY_MOVIE_LIST,
+                    navigateToDetail = {}
+                )
+            }
+            is RequestState.Success -> {
+                requestState.data.results?.let {
+                    MovieCardList(
+                        movieList = it,
+                        navigateToDetail = navigateToDetail,
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -102,6 +119,5 @@ private fun MovieListSectionPrev() {
     MovieListSection(
         navigateToDetail = {},
         title = "Now Playing",
-        movieList = DUMMY_MOVIE_LIST,
     )
 }

@@ -3,6 +3,7 @@ package com.fshou.mouvie.data.network.service
 import com.fshou.mouvie.data.network.response.MovieDetailResponse
 import com.fshou.mouvie.data.network.response.MovieListResponse
 import com.fshou.mouvie.utils.API_KEY
+import com.fshou.mouvie.utils.REGION
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -42,7 +43,7 @@ interface TMDBService {
         language: String = "en-US",
 
         @Query("region")
-        region: String = "US",
+        region: String = REGION,
 
         @Query("page")
         page: Int = 1,
@@ -56,7 +57,7 @@ interface TMDBService {
         language: String = "en-US",
 
         @Query("region")
-        region: String = "US",
+        region: String = REGION,
 
         @Query("page")
         page: Int = 1,
@@ -71,7 +72,7 @@ interface TMDBService {
         language: String = "en-US",
 
         @Query("region")
-        region: String = "US",
+        region: String = REGION,
 
         @Query("page")
         page: Int = 1,
@@ -85,10 +86,11 @@ interface TMDBService {
         language: String = "en-US",
 
         @Query("region")
-        region: String = "US",
+        region: String = REGION,
 
         @Query("page")
         page: Int = 1,
+
         @Query("api_key")
         apiKey: String= API_KEY
     ): MovieListResponse

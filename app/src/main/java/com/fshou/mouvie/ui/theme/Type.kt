@@ -23,8 +23,8 @@ val Typography = Typography(
     ),
     titleLarge = TextStyle(
         fontFamily = HELVETICA,
-        fontSize = 32.sp,
-        lineHeight = 38.sp,
+        fontSize = 28.sp,
+        lineHeight = 32.sp,
         letterSpacing = (-0.8).sp
     ),
     labelLarge = TextStyle(
