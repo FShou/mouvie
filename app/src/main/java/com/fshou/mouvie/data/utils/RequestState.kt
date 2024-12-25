@@ -55,8 +55,8 @@ fun <T> Flow<T>.asRequestState(): Flow<RequestState<T>> {
         }
 }
 
-const val DEFAULT_TIMEOUT = 5000L
-fun <T> Flow<RequestState<T>>.asUiState(scope: CoroutineScope): StateFlow<UiState<T>> {
+const val DEFAULT_TIMEOUT = 10000L
+fun <T> Flow<RequestState<T>>.uiStateStateFlow(scope: CoroutineScope): StateFlow<UiState<T>> {
     return this.map {
         when (it) {
             is RequestState.Error -> UiState.Error(msg = it.msg)

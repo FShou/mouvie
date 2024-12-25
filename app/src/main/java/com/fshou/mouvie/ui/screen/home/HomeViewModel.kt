@@ -4,19 +4,34 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fshou.mouvie.data.MovieRepository
 import com.fshou.mouvie.data.utils.asRequestState
-import com.fshou.mouvie.data.utils.asUiState
+import com.fshou.mouvie.data.utils.uiStateStateFlow
 
 
 class HomeViewModel(movieRepository: MovieRepository) : ViewModel() {
     val previewDiscoverMovies =
-        movieRepository.getPreviewDiscoverMovies().asRequestState().asUiState(viewModelScope)
+        movieRepository
+            .getPreviewDiscoverMovies()
+            .asRequestState()
+            .uiStateStateFlow(viewModelScope)
     val previewNowPlayingMovies =
-        movieRepository.getPreviewNowPlayingMovies().asRequestState().asUiState(viewModelScope)
+        movieRepository
+            .getPreviewNowPlayingMovies()
+            .asRequestState()
+            .uiStateStateFlow(viewModelScope)
     val previewUpcomingMovies =
-        movieRepository.getPreviewUpcomingMovies().asRequestState().asUiState(viewModelScope)
+        movieRepository
+            .getPreviewUpcomingMovies()
+            .asRequestState()
+            .uiStateStateFlow(viewModelScope)
     val previewPopularMovies =
-        movieRepository.getPreviewPopularMovies().asRequestState().asUiState(viewModelScope)
+        movieRepository
+            .getPreviewPopularMovies()
+            .asRequestState()
+            .uiStateStateFlow(viewModelScope)
     val previewTopRatedMovies =
-        movieRepository.getPreviewTopRatedMovies().asRequestState().asUiState(viewModelScope)
+        movieRepository
+            .getPreviewTopRatedMovies()
+            .asRequestState()
+            .uiStateStateFlow(viewModelScope)
 }
 
