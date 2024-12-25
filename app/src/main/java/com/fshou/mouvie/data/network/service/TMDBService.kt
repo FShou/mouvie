@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface TMDBService {
     @GET("movie/{movieId}")
-    suspend fun getMovieDetail(
+     suspend fun getMovieDetail(
         @Path("movieId")
         movieId: Int,
         @Query("api_key")

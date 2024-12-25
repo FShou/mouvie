@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fshou.mouvie.data.network.response.MovieItem
 import com.fshou.mouvie.data.network.response.MovieListResponse
-import com.fshou.mouvie.data.utils.RequestState
 import com.fshou.mouvie.ui.theme.MouvieTheme
+import com.fshou.mouvie.ui.utils.UiState
 
 @Composable
 fun SectionTitle(modifier: Modifier = Modifier, text: String) {
@@ -85,24 +85,24 @@ private fun MovieCardListPrev() {
 fun MovieListSection(
     modifier: Modifier = Modifier,
     navigateToDetail: (Int) -> Unit,
-    requestState: RequestState<MovieListResponse> = RequestState.Loading,
+    movieListResponseUiState: UiState<MovieListResponse> = UiState.Loading,
     title: String
 ) {
     Column(modifier = modifier) {
         SectionTitle(text = title, modifier = Modifier.padding(horizontal = 24.dp))
         Spacer(modifier = Modifier.height(6.dp))
-        when(requestState) {
-            is RequestState.Error -> {
-                Text(text = requestState.msg, color = Color.White)
+        when(movieListResponseUiState) {
+            is UiState.Error -> {
+                Text(text = movieListResponseUiState.msg, color = Color.White)
             }
-            RequestState.Loading -> {
+            UiState.Loading -> {
                 MovieCardList(
                     movieList = DUMMY_MOVIE_LIST,
                     navigateToDetail = {}
                 )
             }
-            is RequestState.Success -> {
-                requestState.data.results?.let {
+            is UiState.Success -> {
+                movieListResponseUiState.data.results?.let {
                     MovieCardList(
                         movieList = it,
                         navigateToDetail = navigateToDetail,

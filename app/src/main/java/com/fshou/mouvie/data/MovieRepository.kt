@@ -1,35 +1,35 @@
 package com.fshou.mouvie.data
 
 import com.fshou.mouvie.data.network.service.TMDBService
-import com.fshou.mouvie.data.utils.BaseRepository
+import kotlinx.coroutines.flow.flow
 
 class MovieRepository(
     private val TMDBService: TMDBService
-) : BaseRepository() {
-    fun getMovieDetail(movieId: Int) = callApiWithState { TMDBService.getMovieDetail(movieId) }
+)  {
+    fun getMovieDetail(movieId: Int) = flow { emit(TMDBService.getMovieDetail(movieId)) }
 
-    fun getPreviewDiscoverMovies() = callApiWithState { TMDBService.getDiscoverMovies() }
+    fun getPreviewDiscoverMovies() = flow { emit(TMDBService.getDiscoverMovies()) }
     fun getAllDiscoverMovies() {
         // TODO: All
     }
 
 
-    fun getPreviewNowPlayingMovies() = callApiWithState { TMDBService.getNowPlayingMovies() }
+    fun getPreviewNowPlayingMovies() = flow { emit(TMDBService.getNowPlayingMovies()) }
     fun getAllNowPlayingMovies() {
         // TODO: All
     }
 
-    fun getPreviewUpcomingMovies() = callApiWithState { TMDBService.getUpcomingMovies() }
+    fun getPreviewUpcomingMovies() = flow { emit(TMDBService.getUpcomingMovies()) }
     fun getAllUpcomingMovies() {
         // TODO: All
     }
 
-    fun getPreviewPopularMovies() = callApiWithState { TMDBService.getPopularMovies() }
+    fun getPreviewPopularMovies() = flow { emit(TMDBService.getPopularMovies()) }
     fun getAllPopularMovies() {
         // TODO: All
     }
 
-    fun getPreviewTopRatedMovies() = callApiWithState { TMDBService.getTopRatedMovies() }
+    fun getPreviewTopRatedMovies() = flow { emit(TMDBService.getTopRatedMovies()) }
     fun getAllTopRatedMovies() {
         // TODO: All
     }
