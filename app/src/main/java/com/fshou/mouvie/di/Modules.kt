@@ -1,5 +1,6 @@
 package com.fshou.mouvie.di
 
+import com.fshou.mouvie.data.MovieRepository
 import com.fshou.mouvie.data.network.service.TMDBService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val networkModule = module {
     single {
         val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val requestHeaders = req.newBuilder()
@@ -30,7 +32,12 @@ val networkModule = module {
             .client(client)
             .build()
 
-        // Todo: Api Service
         retrofit.create(TMDBService::class.java)
+    }
+}
+
+val repositoryModule = module {
+    single {
+        MovieRepository(get())
     }
 }

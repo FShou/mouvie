@@ -6,15 +6,15 @@ import com.fshou.mouvie.data.utils.BaseRepository
 class MovieRepository(
     private val TMDBService: TMDBService
 ) : BaseRepository() {
-    fun getPreviewDiscoverMovies() = callApiWithState { TMDBService.getDiscoverMovies() }
+    fun getMovieDetail(movieId: Int) = callApiWithState { TMDBService.getMovieDetail(movieId) }
 
+    fun getPreviewDiscoverMovies() = callApiWithState { TMDBService.getDiscoverMovies() }
     fun getAllDiscoverMovies() {
         // TODO: All
     }
 
 
     fun getPreviewNowPlayingMovies() = callApiWithState { TMDBService.getNowPlayingMovies() }
-
     fun getAllNowPlayingMovies() {
         // TODO: All
     }
@@ -25,15 +25,13 @@ class MovieRepository(
     }
 
     fun getPreviewPopularMovies() = callApiWithState { TMDBService.getPopularMovies() }
-
     fun getAllPopularMovies() {
         // TODO: All
     }
 
     fun getPreviewTopRatedMovies() = callApiWithState { TMDBService.getTopRatedMovies() }
-
     fun getAllTopRatedMovies() {
         // TODO: All
     }
-    
+
 }
