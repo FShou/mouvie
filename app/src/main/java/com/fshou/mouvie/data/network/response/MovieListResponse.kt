@@ -7,14 +7,13 @@ data class MovieListResponse(
     val page: Int? = null,
 
     @field:SerializedName("results")
-    val results: List<ResultsItem>? = null,
+    val results: List<MovieItem>? = null,
 )
 
-data class ResultsItem(
+data class MovieItem(
 
     @field:SerializedName("title")
     val title: String,
-
 
     @field:SerializedName("poster_path")
     val posterPath: String,

@@ -22,10 +22,10 @@ val Typography = Typography(
         letterSpacing = (-0.3).sp
     ),
     titleLarge = TextStyle(
-        fontFamily = HELVETICA_MEDIUM,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.5.sp
+        fontFamily = HELVETICA,
+        fontSize = 32.sp,
+        lineHeight = 38.sp,
+        letterSpacing = (-0.8).sp
     ),
     labelLarge = TextStyle(
         fontFamily = HELVETICA,
