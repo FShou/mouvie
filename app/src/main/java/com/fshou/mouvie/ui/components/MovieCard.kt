@@ -32,7 +32,7 @@ fun MovieCard(
     modifier: Modifier = Modifier,
     posterPath: String = "",
     movieId: Int = -1,
-    onClick: (Int) -> Unit
+    onClick: (Int) -> Unit = {}
 ) {
     Box(
         modifier = modifier

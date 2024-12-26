@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemColors
@@ -56,7 +57,7 @@ fun BottomBar(
                         contentDescription = item.contentDescription
                     )
                 },
-                label = { Text(item.title) },
+                label = { Text(item.title, style = MaterialTheme.typography.labelLarge) },
                 selected = currentRoute == item.screen.route,
                 colors = NavigationBarItemColors(
                     selectedIconColor = Color.White,

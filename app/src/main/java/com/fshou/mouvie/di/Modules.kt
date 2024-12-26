@@ -9,6 +9,7 @@ import com.fshou.mouvie.utils.API_KEY
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -47,6 +48,6 @@ val repositoryModule = module {
 }
 
 val viewModelModule = module {
-    single { HomeViewModel(get()) }
-    single { DetailViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

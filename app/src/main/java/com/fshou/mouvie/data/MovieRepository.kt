@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.flow
 
 class MovieRepository(
     private val TMDBService: TMDBService
-)  {
+) {
     fun getMovieDetail(movieId: Int) = flow { emit(TMDBService.getMovieDetail(movieId)) }
 
     fun getPreviewDiscoverMovies() = flow { emit(TMDBService.getDiscoverMovies()) }

@@ -19,6 +19,7 @@ fun PageTitle(
     modifier: Modifier = Modifier,
     text: String = ""
 ) {
+    Spacer(modifier = Modifier.height(24.dp))
     Row(modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
         Text(
             modifier = Modifier.weight(1f),
