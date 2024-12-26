@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fshou.mouvie.data.utils.RequestState
 import com.fshou.mouvie.ui.components.MovieListSection
+import com.fshou.mouvie.ui.components.PageTitle
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -37,6 +38,7 @@ fun HomeScreen(
             .fillMaxSize()
             .verticalScroll(scrollState)
     ) {
+        PageTitle(text = "Home")
         MovieListSection(
             navigateToDetail = navigateToDetail,
             title = "Discover",

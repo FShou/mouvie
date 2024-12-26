@@ -11,7 +11,7 @@ import com.fshou.mouvie.R
 
 val HELVETICA = Font(R.font.helvetica).toFontFamily()
 val HELVETICA_MEDIUM = Font(R.font.helvetica_medium, weight = FontWeight.Medium).toFontFamily()
-
+val CALENDAS_PLUS = Font(R.font.calendas_plus).toFontFamily()
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
@@ -31,6 +31,12 @@ val Typography = Typography(
         fontFamily = HELVETICA,
         fontSize = 11.sp,
         lineHeight = 16.sp,
+        letterSpacing = 0.sp
+    ),
+    displaySmall = TextStyle(
+        fontFamily = CALENDAS_PLUS,
+        fontSize = 36.sp,
+        lineHeight = 40.sp,
         letterSpacing = 0.sp
     )
 
