@@ -35,7 +35,7 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                 .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painterResource(id = R.drawable.ic_launcher_background),
+                painterResource(id = R.drawable.profile_pic),
                 contentDescription = null,
                 modifier = Modifier
                     .size(200.dp)
